@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reproducible Research with R</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Claudio Fronterrè" />
+    <meta name="date" content="2019-07-20" />
+    <link rel="stylesheet" href="claudio.css" type="text/css" />
+    <link rel="stylesheet" href="claudio-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Reproducible Research with R
+## LSHTM useR
+### Claudio Fronterrè
+### 20 July 2019
+
+---
+
+
+
+
+class: inverse, center, middle
+
+# Introduction
+
+---
+
+## Reproducible research
+
+There are serverl aspects of a research project that make it fully reproducible:
+
+- Organising your project.
+- Programming.
+- Reproducible reports and papers.
+- Version control.
+- Archiving.
+
+You can read [A Guide to Reproducible Code in Ecology and Evolution](https://www.britishecologicalsociety.org/wp-content/uploads/2017/12/guide-to-reproducible-code.pdf) for a very good and concise introduction to all these topics.
+
+Today we will focus on how to generate **reproducible reports and papers with R**.
+
+---
+class: inverse, center, middle
+
+# A non reproducible workflow...
+
+---
+&lt;iframe width="100%" height="100%" src="https://www.youtube.com/embed/s3JldKoA0zw?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;
+---
+class: inverse, center, middle
+
+# The solution: Rmarkdown
+---
+## Rmarkdown
+
+R Markdown is an R package that allows you to integrate R code (and its ouput) with text to generate high quality reports in different formats (i.e. HTML, PDF, MS Word). The text is written using Markdown, a simple formatting syntax. 
+
+The best reference currently aviable is this book [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/).
+
+---
+## A wide range of possible outputs
+
+&lt;img src="outputs.png" width="2243" /&gt;
+
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
