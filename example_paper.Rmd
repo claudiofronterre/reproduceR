@@ -1,0 +1,92 @@
+---
+title: "My first paper with Rmarkdown"
+author: "Claudio Fronterrè"
+date: "19 July 2018"
+output:
+  pdf_document: default
+  odt_document: default
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Analysis
+
+During this practical I will be using the `iris` dataset in R.  
+
+```{r summary}
+summary(iris$Sepal.Length)
+mean(iris$Sepal.Length)
+```
+
+I can also include inline R code. The average sepal length is `r round(mean(iris$Sepal.Length), 2)`. 
+
+## Including Plots
+
+It is extremely easy to include plots. 
+
+```{r plot1, echo=FALSE}
+plot(iris$Sepal.Length, iris$Sepal.Width, xlab = "Sepal Length", ylab = "Sepal Width")
+```
+
+To add a caption it is enough to specify the `fig.cap` argument in the R chunk header.
+
+```{r plot2, echo=FALSE, fig.cap="Scatterplot of sepal length and sepal width."}
+plot(iris$Sepal.Length, iris$Sepal.Width, xlab = "Sepal Length", ylab = "Sepal Width")
+```
+
+You can change the height and widht and decide to align the figure in a different way.
+
+```{r plot3, echo=FALSE, fig.cap="Scatterplot of sepal length and sepal width.", fig.height=3, fig.width=4, fig.align='right'}
+plot(iris$Sepal.Length, iris$Sepal.Width, xlab = "Sepal Length", ylab = "Sepal Width")
+```
+
+You can also plot two figure side by side.
+
+```{r plot4, echo=FALSE, fig.show='hold', out.width="50%"}
+plot(iris$Sepal.Length, iris$Sepal.Width, xlab = "Sepal Length", ylab = "Sepal Width")
+plot(iris$Petal.Length, iris$Petal.Width, xlab = "Petal Length", ylab = "Petal Width")
+```
+
+## Including tables
+
+To generate well formatted tables you can use the `kable` function from the `knitr` package. An extensive list of features can be found [here](http://haozhu233.github.io/kableExtra/). 
+
+```{r table1, echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+
+table <- iris %>% 
+  group_by(Species) %>% 
+  summarise(Mean = mean(Petal.Length), Sd = sd(Petal.Length))
+
+knitr::kable(table)
+```
+
+Let's customise our table a little bit.
+
+```{r table2, echo=FALSE, warning=FALSE, message=FALSE}
+knitr::kable(table, digits = 2, col.names = c("Species", "Petal Mean", "Petal Sd"), 
+             caption = "Summary table.", align = "lcc")
+```
+
+Adding the output from a model as a table.
+
+```{r table3, echo=FALSE, results='asis', message=FALSE}
+fit <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+options(xtable.comment = FALSE)
+xtable::xtable(fit)
+```
+
+# Math equations
+
+Inline LaTeX equations can be written in a pair of dollar signs using the LaTeX syntax, e.g. $f(x)=x^2$. Math expressions of the display style can be written in a pair of double dollar signs, e.g. 
+
+$$Y_i=\alpha + \beta X_i + \epsilon_i$$
+
+# Citations
+
+@Lee2013-zb shows that .... [@Lee2013-zb]. More about bibliography and citations can be found [here](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+
+# Refrences
